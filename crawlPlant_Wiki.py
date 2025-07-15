@@ -1,5 +1,6 @@
 import os
 import requests
+import pd as pandas
 from bs4 import BeautifulSoup
 
 base_dir = r"D:\Homework\NC\original_images"  
