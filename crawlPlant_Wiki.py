@@ -30,7 +30,6 @@ def remove_old_taxonomy_files(folder):
 
 def crawl_taxonomy(scientific_name, folder_path):
     url = r"https://vi.wikipedia.org/wiki/" + scientific_name
-    url = r"https://vi.wikipedia.org/wiki/Alchornea_annamica"
 
     response = requests.get(url)
 

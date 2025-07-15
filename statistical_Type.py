@@ -4,7 +4,6 @@ import pandas as pd
 root_dir = r"D:\Homework\NC\original_images"
 
 data = []
-
 missing_all = []
 
 for idx, folder in enumerate(os.listdir(root_dir), 1):
@@ -89,36 +88,28 @@ for idx, folder in enumerate(os.listdir(root_dir), 1):
             'Folder(NamePlant)': name_plant
         })
 
+    print(name_plant)
+    print(kingdom)
+    print(clade)
+    print(unranked)
+    print(order)
+    print(family)
+    print(genus)
+    print(species)
+    print(num_images)
+    print("------------------------")
+
 df = pd.DataFrame(data)
 
 # plants.csv
 df.to_csv('plants.csv', index=False, encoding='utf-8-sig')
 
-# summary.csv
-# Cột cần check
-cols_to_check = [
-    'Giới (Kingdom)',
-    'Nhánh (Clade)',
-    'Không phân hạng',
-    'Bộ (Order)',
-    'Họ (Family)',
-    'Chi (Genus)',
-    'Loài',
-    'Mô tả'
-]
+# Đếm số giá trị null (chuỗi rỗng) cho mỗi cột
+null_counts = df.apply(lambda col: col.isna().sum() + (col == '').sum())
 
-summary_data = {
-    'Loại': ['Có giá trị', 'Không có giá trị']
-}
+# Chuyển thành DataFrame để lưu
+null_df = null_counts.reset_index()
+null_df.columns = ['Column', 'NullCount']
 
-for col in cols_to_check:
-    has_value = df[col].notna().sum()
-    no_value = df.shape[0] - has_value
-    summary_data[col] = [has_value, no_value]
-
-summary_df = pd.DataFrame(summary_data)
-
-# save
-summary_df.to_csv('summary.csv', index=False, encoding='utf-8-sig')
-
-print("==== Done ====")
+# null_counts.csv
+null_df.to_csv('plants_null_counts.csv', index=False, encoding='utf-8-sig')
