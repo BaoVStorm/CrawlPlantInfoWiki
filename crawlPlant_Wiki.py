@@ -1,6 +1,6 @@
 import os
 import requests
-import pd as pandas
+import pandas as pd
 from bs4 import BeautifulSoup
 
 base_dir = r"D:\Homework\NC\original_images"  
@@ -96,9 +96,8 @@ def main():
 
     if missing_data:
         df_missing = pd.DataFrame(missing_data, columns=["Missing Taxonomy"])
-        output_path = os.path.join(base_dir, "missing_taxonomy.csv")
-        df_missing.to_csv(output_path, index=False, encoding='utf-8-sig')
-        print(f"\n=== Đã lưu danh sách thiếu taxonomy vào: {output_path}")
+        df_missing.to_csv('missing_taxonomy.csv', index=False, encoding='utf-8-sig')
+        print(f"\n=== Đã lưu danh sách thiếu taxonomy")
     else:
         print("\n=== Tất cả cây đều có dữ liệu taxonomy.")
 
