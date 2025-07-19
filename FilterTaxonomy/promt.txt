@@ -1,0 +1,27 @@
+đọc file plant.csv
+
+# Danh sách phân loại khoa học cần xử lý và số ảnh của mỗi  phân loại khoa học
+all_cols = {
+    'Giới (Kingdom)': 200,
+    'Nhánh (Clade)' : 150,
+    'Không phân hạng' : 150,
+    'Nhánh_KPL' : 150,
+    'Bộ (Order)' : 100,
+    'Họ (Family)': 80,
+    'Chi (Genus)': 40,
+    'Loài': 20
+}
+
+# plant csv có chứa danh sách các cây và các phân loại khoa học tương ứng giờ hãy tạo 1 dictionary ứng với từng phân loại khoa học mỗi phân loại là 1 dictionary khác lưu tất cả các giá trị của phân loại khoa học đó và mỗi giá trị đó lưu  1 mảng các index của các dòng trong plant.csv mô tả thuộc tính đó có trong giá trị thuộc vị trí index đó
+# ví dụ:
+# {
+    ...
+    'Bộ (Order)': {
+        'abc': [1, 5 , 6, 200]
+        ...
+    }
+    ....
+}
+
+các giá trị của từng phân loại không cần xử lý nữa vì đã xử lý từ code trước chỉ cần gọi lại file csv và tiến hành tìm index. Lấy csv tại thư mục 'DistinctCount/taxonomy'
+
